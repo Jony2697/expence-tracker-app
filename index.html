@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Tracker - Smart Finance Management</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <h1>Budget Tracker</h1>
+        <p class="subtitle">Smart Finance Management</p>
+      </div>
+    </header>
+
+    <!-- Setup Section -->
+    <section class="setup-section">
+      <h2 class="section-title">Initial Setup</h2>
+      <div class="input-grid">
+        <div class="input-group">
+          <label for="totalBalanceInput">Total Balance</label>
+          <input type="number" id="totalBalanceInput" placeholder="Enter your total balance" step="0.01">
+        </div>
+        <div class="input-group">
+          <label for="savingInput">Savings Goal</label>
+          <input type="number" id="savingInput" placeholder="Set your savings amount" step="0.01">
+        </div>
+        <button class="btn btn-primary" onclick="setBalance()">
+          <span>Save Setup</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Add Expense Section -->
+    <section class="expense-section">
+      <h2 class="section-title">Add Expense</h2>
+      <div class="input-grid">
+        <div class="input-group">
+          <label for="expenseAmount">Amount</label>
+          <input type="number" id="expenseAmount" placeholder="0.00" step="0.01">
+        </div>
+        <div class="input-group">
+          <label for="expenseCategory">Category</label>
+          <select id="expenseCategory">
+            <option value="Food">🍔 Food</option>
+            <option value="Transport">🚗 Transport</option>
+            <option value="Shopping">🛍️ Shopping</option>
+            <option value="Entertainment">🎬 Entertainment</option>
+            <option value="Bills">💡 Bills</option>
+            <option value="Health">⚕️ Health</option>
+            <option value="Others">📦 Others</option>
+          </select>
+        </div>
+        <button class="btn btn-success" onclick="addExpense()">
+          <span>Add Expense</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Dashboard Cards -->
+    <section class="dashboard">
+      <div class="card card-balance">
+        <div class="card-icon">💵</div>
+        <div class="card-content">
+          <h3>Total Balance</h3>
+          <p class="card-value" id="totalBalance">0</p>
+        </div>
+      </div>
+
+      <div class="card card-savings">
+        <div class="card-icon">🏦</div>
+        <div class="card-content">
+          <h3>Total Savings</h3>
+          <p class="card-value" id="totalSavings">0</p>
+        </div>
+      </div>
+
+      <div class="card card-expense">
+        <div class="card-icon">💸</div>
+        <div class="card-content">
+          <h3>Total Expense</h3>
+          <p class="card-value" id="totalExpense">0</p>
+        </div>
+      </div>
+
+      <div class="card card-available">
+        <div class="card-icon">💰</div>
+        <div class="card-content">
+          <h3>Available Balance</h3>
+          <p class="card-value" id="availableBalance">0</p>
+        </div>
+      </div>
+
+      <div class="card card-daily">
+        <div class="card-icon">📊</div>
+        <div class="card-content">
+          <h3>Avg Daily Expense</h3>
+          <p class="card-value" id="avgDailyExpense">0</p>
+        </div>
+      </div>
+
+      <div class="card card-survival">
+        <div class="card-icon">⏳</div>
+        <div class="card-content">
+          <h3>Can Survive</h3>
+          <p class="card-value"><span id="survivalDays">0</span> <small>days</small></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chart Section -->
+    <section class="chart-section">
+      <h2 class="section-title">Expense Breakdown</h2>
+      <div class="chart-container">
+        <canvas id="expenseChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Expense History Table -->
+    <section class="table-section">
+      <h2 class="section-title">Expense History</h2>
+      <div class="table-container">
+        <table id="expenseTable">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Daily Total</th>
+              <th>Category</th>
+              <th>Amount</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Expenses will be rendered here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
