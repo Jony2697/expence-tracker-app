@@ -425,6 +425,33 @@
     color: var(--text-light);
     font-style: italic;
   }
+
+/* ====== TOAST NOTIFICATION ====== */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #10b981;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.4s ease;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast.error {
+  background: #ef4444;
+}
+
   
   /* ====== RESPONSIVE DESIGN ====== */
   @media (max-width: 768px) {

@@ -76,6 +76,9 @@ function addExpense() {
   updateUI();
   updateChart();
   renderTable();
+  
+  showToast("Expense added successfully!");
+
 
   // Clear inputs
   document.getElementById("expenseAmount").value = "";
@@ -100,7 +103,7 @@ function editExpense(id) {
   if (newAmount !== null && newAmount !== "") {
     const parsedAmount = parseFloat(newAmount);
     if (isNaN(parsedAmount) || parsedAmount <= 0) {
-      alert("Please enter a valid amount");
+showToast("Please enter a valid expense amount!", "error");
       return;
     }
     expense.amount = parsedAmount;
@@ -269,4 +272,18 @@ function updateChart() {
       }
     }
   });
+}
+// ====== SHOW TOAST ======
+function showToast(message, type = "success") {
+  const toast = document.getElementById("toast");
+  toast.innerText = message;
+
+  toast.className = "toast show";
+  if (type === "error") {
+    toast.classList.add("error");
+  }
+
+  setTimeout(() => {
+    toast.className = "toast";
+  }, 3000);
 }
